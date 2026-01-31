@@ -252,7 +252,7 @@ func task14() {
     }
     
     // 4. ЛОГИКА - определяем какое число БОльшее?
-  let(larger, smaller) = numberFirst >= numberSecond
+  let (larger, smaller) = numberFirst >= numberSecond
     ? (numberFirst, numberSecond) : (numberSecond, numberFirst)
     
     // 5. ВЫВОД - print(результат)
@@ -321,48 +321,73 @@ func task17() {
     print(result)
 }
 
+func safeIntInput(prompt: String) -> Int? { // функция "безопасный ввод числа" с параметром-строкой подсказки и -> Double?
+    print(prompt)
+    guard let input = readLine(), // читаем строку из консоли
+          let value = Int(     // пытаемся преобразовать в Double
+              input.trimmingCharacters(in: .whitespaces) // убираем пробелы по краям
+          ) else {
+        print("Incorrect number format") // если не получилось получить число
+        return nil                       // возвращаем nil
+    }
+    return value                        // если всё ок — возвращаем число
+}
+
+func isEven(number: Int) -> String {   // ← вне task18
+     number % 2 == 0 ? "Even" : "Odd"  // ← русский
+}
+
 func task18() {
     // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
-    print("Запроси у юзера инфу ..")
+    print("🎯 Проверка четности числа. Ввод: число. Вывод: 'Четное'/'Нечетное'")
     
     // 2. ВВОД + ПРОВЕРКИ - guard let данные
-   
-    
-    // 3. СТРУКТУРА/МОДЕЛЬ - struct/let константы
-    
-    
-    // 4. ЛОГИКА (создание объекта)
-    
-    
-    // 5. ВЫВОД - print(результат)
+    guard let number = safeIntInput(prompt: "Введи число") else {
+        print("❌ Ошибка ввода")
+        return
+    }
+    // 4. ЛОГИКА - определяем число четное?
+    let result = isEven(number: number)
+    print("Number \(number) = \(result)")
+    }
+ 
+func transferToFahrenheit(degree: Double) -> Double {
+    degree * 9/5 + 32
 }
+
 func task19() {
-    // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
-    print("Запроси у юзера инфу ..")
+    // 1. ОПИСАНИЕ ЗАДАЧИ - Конвертер C → F (F = C × 9/5 + 32)
+    print("🔥 Конвертер температуры")
     
-    // 2. ВВОД + ПРОВЕРКИ - guard let данные
-   
+    guard let degree = safeDoubleInput(prompt: "Enter °C:") else {
+        print("❌ Uncorrect enter")
+        return
+    }
     
-    // 3. СТРУКТУРА/МОДЕЛЬ - struct/let константы
-    
-    
-    // 4. ЛОГИКА (создание объекта)
-    
-    
-    // 5. ВЫВОД - print(результат)
+    let fahrenheit = transferToFahrenheit(degree: degree)
+    print(String(format: "%.1f°C = %.1f°F", degree, fahrenheit))
 }
+
+func choose(language: String) -> String {
+    if language.caseInsensitiveCompare("swift") == .orderedSame {
+        return "SWIFT"
+    }
+    return "OTHER"
+}
+
 func task20() {
-    // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
-    print("Запроси у юзера инфу ..")
+      // 1. Описание задачи - Любимый язык программирования?
+    print("💻 Favorite programming language:")
     
-    // 2. ВВОД + ПРОВЕРКИ - guard let данные
-   
+    guard let language = safeStringInput(prompt: "💻 Enter favorite programming language:") else {
+        print("❌ Uncorrect enter")
+        return
+    }
     
-    // 3. СТРУКТУРА/МОДЕЛЬ - struct/let константы
-    
-    
-    // 4. ЛОГИКА (создание объекта)
-    
-    
-    // 5. ВЫВОД - print(результат)
+    let favoriteLanguage = choose(language: language)
+    if favoriteLanguage == "SWIFT" {
+        print("🔥 Super!")
+        } else {
+            print("Not bad")
+    }
 }
