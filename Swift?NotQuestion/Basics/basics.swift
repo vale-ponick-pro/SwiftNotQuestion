@@ -9,48 +9,107 @@ import Foundation
 
 // --- ГЛАВНАЯ ФУНКЦИЯ ---
 func runProgram() {
-    task1()
-    task2()
-    task3()
-    task4()
-    task5()
-    task6()
-    task7()
-    task8()
-    task9()
-    task10()
-    task11()
-    task12()
-    task13()
-    task14()
-    task15()
-    task16()
-    task17()
-    task18()
-    task19()
-    task20()
+    while true {
+        print("\n🎯 Choose the task: (0-20):")
+        print("  0 — Exit")
+        print("  1-2 — Name/Surname")
+        print("  4-9 — Mathematics")
+        print(" 10-13 — User")
+        print(" 14-15 — Comparison numbers")
+        print(" 16-17 — Year of birth")
+        print(" 18 — Parity")
+        print(" 19 — Temperature")
+        print(" 20 — Programming language")
+        print("21 - Radio/TV")
+        
+        guard let choice = safeIntInput(prompt: "Your choice: ") else {
+            print("❌ Invalid input!")
+            continue
+        }
+        
+        switch choice {
+        case 0:
+            print("By!")
+            return
+        case 1:
+            task1()
+        case 2:
+            task2()
+        case 4, 5, 6, 7, 8, 9:
+            switch choice {
+            case 4: task4()
+            case 5: task5()
+            case 6: task6()
+            case 7: task7()
+            case 8: task8()
+            case 9: task9()
+            default: break
+            }
+        case 10, 11, 12, 13:
+            switch choice {
+            case 10: task10()
+            case 11: task11()
+            case 12: task12()
+            case 13: task13()
+            default: break
+            }
+        case 14, 15:
+            task15() // Обе про сравнение
+        case 16, 17:
+            task17() // Более современная
+        case 18: task18()
+        case 19: task19()
+        case 20: task20()
+        case 21: task21()
+        default:
+            print("❌ Task \(choice) isn't ready yet!")
+        }
+    }
+}
+
+func safeStringInput(prompt: String) -> String {  // MARK: - Безопасный ввод непустой строки
+    print(prompt)
+    guard let input = readLine(),
+          !input.trimmingCharacters(in: .whitespaces).isEmpty else {
+        print("❌ Empty string - invalid!")
+        return "Error!"
+    }
+    return input.trimmingCharacters(in: .whitespaces)
 }
 
 func task1() {
-    print("Task 1: Введи свое имя:")
-    guard let name = readLine(), !name.isEmpty else {
-        print("Имя не введено")
-        return
+    print("Task 1: Weather:")
+    
+    let rain = safeStringInput(prompt: "Is it raining? (yes/no): ")
+    switch rain.lowercased() {
+    case "yes":
+        print("Don't forget umbrella! ☔️")
+    case "no":
+        let sun = safeStringInput(prompt: "Is it sunny? (yes/no): ")
+        switch sun.lowercased() {
+        case "yes":
+            print("Don't forget sunglasses! ☀️")
+        case "no":
+            print("Nice walk! 👟")
+        default:
+            print("Error!")
+        }
+    default:
+        print("Error!")
     }
-    print("Hi, \(name)") // Hi, vale!
 }
 
 func task2() {
-    print("Task 2: Введи свое имя:")
+    print("Task 2: Enter your name:")
     guard let name = readLine()?.trimmingCharacters(in: .whitespaces) else { return }
-    print("Введи фамилию:")
+    print("Enter your surname:")
     guard let surname = readLine()?.trimmingCharacters(in: .whitespaces) else { return }
     
     print("Hello, \(name) \(surname)")
 }
 
 func task3() {
-    print("Task 3: введи стихи построчно:")
+    print("Task 3: Enter poem line by line:")
     print("""
     Fifteen men on the dead man'schest -
     Yo-ho-h0 and the bottle of rum!
@@ -65,7 +124,7 @@ func safeDoubleInput(prompt: String) -> Double? { // функция "безоп�
           let value = Double(     // пытаемся преобразовать в Double
               input.trimmingCharacters(in: .whitespaces) // убираем пробелы по краям
           ) else {
-        print("Incorrect number format") // если не получилось получить число
+        print("Invalid number format") // если не получилось получить число
         return nil                       // возвращаем nil
     }
     return value                         // если всё ок — возвращаем число
@@ -79,17 +138,17 @@ func safeDoubleInput(prompt: String) -> Double? { // функция "безоп�
 
 func task4() {
     print("Task 4:")
-    guard let a = safeDoubleInput(prompt: "Введи число № 1:"),
-          let b = safeDoubleInput(prompt: "Введи число № 2:") else { return }
+    guard let a = safeDoubleInput(prompt: "Enter number 1:"),
+          let b = safeDoubleInput(prompt: "Enter number 2:") else { return }
     
-    print("Сумма = \(a + b)") // Сумма = 33
+    print("Sum = \(a + b)") // Сумма = 33
 }
 
 func task5() {
     print("Task 5:")
-    guard let x = safeDoubleInput(prompt: "Введи первое дробное число:"),
-          let y = safeDoubleInput(prompt: "Введи второе дробное число:"),
-          let z = safeDoubleInput(prompt: "Введи третье дробное число:"), z != 0 else {
+    guard let x = safeDoubleInput(prompt: "Enter first double number:"),
+          let y = safeDoubleInput(prompt: "Enter second double number:"),
+          let z = safeDoubleInput(prompt: "Enter fird double number:"), z != 0 else {
               print("Error! Division on 0 or incorrect data")
               return
           }
@@ -101,8 +160,8 @@ func task5() {
 func task6() {
     print("Task 6: сколько друзей было в баре? Сумма счета? посчитай - сколько выходит с одного и выведи сообщение 'Значит с каждого по [столько то] рублей'")
     guard let total = safeDoubleInput(prompt: "Введи сумму общего счета (руб.):"),
-          let friendsCount = safeDoubleInput(prompt: "Введи количество друзей:"), friendsCount > 0 else {
-        print("❌ Ошибка ввода!")
+          let friendsCount = safeDoubleInput(prompt: "ВEnter number freinds:"), friendsCount > 0 else {
+        print("❌ Invalid enter!")
         return
     }
    
@@ -160,31 +219,24 @@ func task9() {
     
     print("В \(weeks) неделях \(roundedDays) дней, \(roundedHours) часов, \(roundedMinutes) минут, \(roundedSeconds) секунд")
 }
-
-func safeStringInput(prompt: String) -> String? {  // MARK: - Безопасный ввод непустой строки
-    print(prompt)
-    guard let input = readLine(),
-          !input.trimmingCharacters(in: .whitespaces).isEmpty else {
-        print("❌ Пустая строка недопустима")
-        return nil
-    }
-    return input.trimmingCharacters(in: .whitespaces)
-}
     
     func task10() {
         print("Юзеру: введи свое имя, введи свою фамилию. Соедини их в новое свойство и выведи на консоль")
-        guard let name = safeStringInput(prompt: "Введите свое имя"),
-              let surname = safeStringInput(prompt: "Введите свою фамилию") else { return }
-             
-              let fullname = name + " " + surname
+       let name = safeStringInput(prompt: "Введите свое имя")
+       let surname = safeStringInput(prompt: "Введите свою фамилию")
+        
+              
+      let fullname = name + " " + surname
               print(fullname)
     }
 
-    func task11() {
+func task11() {
         print("Юзеру: введите свое имя, введите свой вес. Сохрани вес в переменной. Создай константу с размерностью 'кг'. Добавь к переменной размерность. Выведи на консоль.")
         
-        guard let name = safeStringInput(prompt: "ВВедите свое имя"),
-              let weight = safeDoubleInput(prompt: "Введите свой вес") else { return }
+       let name = safeStringInput(prompt: "ВВедите свое имя")
+        guard let weight = safeDoubleInput(prompt: "Введите свой вес") else {
+            return
+        }
         
               let kg = "kg"
               let weightInKg = String(weight) + " " + kg
@@ -193,9 +245,9 @@ func safeStringInput(prompt: String) -> String? {  // MARK: - Безопасны
 
     func task12() {
         print("Создай новую переменную, добавь в нее построчно инфу с полным именем и весом юзера из предыдущих задач. Выведи в консоль")
-        guard let name = safeStringInput(prompt: "ВВедите свое имя"),
-              let surname = safeStringInput(prompt: "ВВедите свою фамилию"),
-              let weight = safeDoubleInput(prompt: "Введите свой вес"), weight > 0 else { return }
+         let name = safeStringInput(prompt: "ВВедите свое имя")
+         let surname = safeStringInput(prompt: "ВВедите свою фамилию")
+         guard let weight = safeDoubleInput(prompt: "Введите свой вес"), weight > 0 else { return }
         
         let kg = "kg"
         let weightInKg = String(weight) + " " + kg
@@ -211,9 +263,9 @@ func task13() {
     print("Запроси у юзера инфу с полным именем и весом. Выведи в консоль")
     
     // 2. ВВОД + ПРОВЕРКИ - guard let данные
-    guard let name = safeStringInput(prompt: "Введите свое имя"),
-      let surname = safeStringInput(prompt: "Введите свою фамилию"),
-          let weight = safeDoubleInput(prompt: "Введите свой вес"), weight > 0 else { print("❌ Ошибка ввода!")
+    let name = safeStringInput(prompt: "Введите свое имя")
+    let surname = safeStringInput(prompt: "Введите свою фамилию")
+    guard let weight = safeDoubleInput(prompt: "Введите свой вес"), weight > 0 else { print("❌ Ошибка ввода!")
         return
     }
     
@@ -377,13 +429,9 @@ func choose(language: String) -> String {
 
 func task20() {
       // 1. Описание задачи - Любимый язык программирования?
-    print("💻 Favorite programming language:")
+    print("💻 Task 20. Favorite programming language:")
     
-    guard let language = safeStringInput(prompt: "💻 Enter favorite programming language:") else {
-        print("❌ Uncorrect enter")
-        return
-    }
-    
+    let language = safeStringInput(prompt: "💻 Enter favorite programming language:")
     let favoriteLanguage = choose(language: language)
     if favoriteLanguage == "SWIFT" {
         print("🔥 Super!")
@@ -391,3 +439,21 @@ func task20() {
             print("Not bad")
     }
 }
+
+func task21() {
+    print("Task 23. Choose radio/TV:")
+    
+    let choice = safeIntInput(prompt: "Choose: 1 - radio, 2 - TV, 3 - cancellation")
+    
+    switch choice {
+    case 1:
+        print("Radio")
+    case 2:
+        print("TV")
+    case 3:
+        print("Cancellation")
+    default:
+        print("Error!")
+    }
+}
+
