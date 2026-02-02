@@ -443,15 +443,15 @@ func task20() {
 func task21() {
     print("Task 23. Choose radio/TV:")
     
-    let choice = safeIntInput(prompt: "Choose: 1 - radio, 2 - TV, 3 - cancellation")
+    let choice = safeIntInput(prompt: "Choose: 1 - radio, 2 - TV, 3 - by")
     
     switch choice {
     case 1:
-        print("Radio")
+        print("Turn on radio")
     case 2:
-        print("TV")
+        print("Turn on TV")
     case 3:
-        print("Cancellation")
+        print("Bye!")
     default:
         print("Error!")
     }
