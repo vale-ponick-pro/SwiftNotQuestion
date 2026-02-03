@@ -8,14 +8,12 @@
 import Foundation
 
 public func runProgram() {
-    print(String(repeating: "=", count: 50))
     print("🚀 ПРОГРАММА ЗАПУЩЕНА!")
-    print(String(repeating: "=", count: 50))
     
     while true {
         showMenu()
         
-        print("\nВаш выбор (0-23): ", terminator: "")
+        print("\nВаш выбор (0-24): ", terminator: "")
         guard let input = readLine(),
               let choice = Int(input) else {
             print("Пожалуйста, введите число!")
@@ -27,8 +25,8 @@ public func runProgram() {
             return
         }
         
-        if choice < 1 || choice > 23 {
-            print("Неверный выбор! Введите 0-23")
+        if choice < 1 || choice > 24 {
+            print("Неверный выбор! Введите 0-24")
             continue
         }
         
@@ -38,9 +36,7 @@ public func runProgram() {
 }
 
 private func showMenu() {
-    print("\n" + String(repeating: "=", count: 50))
     print("🎯 ГЛАВНОЕ МЕНЮ")
-    print(String(repeating: "=", count: 50))
     print(" 0 — Выход")
     
     print("\n👤 ВВОД ДАННЫХ:")
@@ -71,14 +67,13 @@ private func showMenu() {
     print("21 — Радио/ТВ")
     print("22 — Английское меню")
     print("23 — Меню (словарь)")
+    print("24 - Дни недели")
     
-    print(String(repeating: "=", count: 50))
+    print(String(repeating: "-", count: 5))
 }
 
 private func executeTask(_ number: Int) {
-    print("\n" + String(repeating: "=", count: 50))
     print("📋 ВЫПОЛНЯЕМ ЗАДАЧУ \(number)")
-    print(String(repeating: "=", count: 50))
     
     switch number {
     case 1: task1()
@@ -104,6 +99,7 @@ private func executeTask(_ number: Int) {
     case 21: task21()
     case 22: task22()
     case 23: task23()
+    case 24: task24()
     default:
         print("Неизвестная задача")
     }

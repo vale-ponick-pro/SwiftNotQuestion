@@ -2,23 +2,19 @@
 //  logicAndMenus.swift
 //  Swift?NotQuestion
 //
-//  Created by Валерия Пономарева on 03.02.2026.
+//  Created by Валерия Пономарева 03.02.2026.
 //
 
 import Foundation
 
 // Вспомогательная функция для этого файла
 private func printHeader(_ title: String) {
-    print("\n" + String(repeating: "=", count: 50))
-    print("🧠 \(title)")
-    print(String(repeating: "=", count: 50))
+    print("\(title)")
 }
 
-// ============================================
 // ЛОГИЧЕСКИЕ ЗАДАЧИ
-// ============================================
 
-/// ЗАДАЧА 14: Сравнение чисел (базовое)
+// ЗАДАЧА 14: Сравнение чисел (базовое)
 public func task14() {
     printHeader("Задача 14: Сравнение чисел")
     
@@ -265,11 +261,9 @@ public func task22() {
     printHeader("Задача 22: Английское меню")
     
     print("\n🍽️  ВЫБЕРИТЕ БЛЮДО")
-    print(String(repeating: "=", count: 30))
     print("1 - Салаты (Salads)")
     print("2 - Супы (Soups)")
     print("3 - Основные блюда (Main Dishes)")
-    print(String(repeating: "=", count: 30))
     
     guard safeIntInput(prompt: "\n📋 Категория (1-3):") != nil else {
         print("❌ Ошибка ввода категории!")
@@ -278,11 +272,11 @@ public func task22() {
     }
     
     print("\n🌱 ВЫБЕРИТЕ ТИП ПИТАНИЯ")
-    print(String(repeating: "=", count: 30))
+    print(String(repeating: "-", count: 3))
     print("1 - Мясо (Meat)")
     print("2 - Рыба (Fish)")
     print("3 - Вегетарианское (Vegan)")
-    print(String(repeating: "=", count: 30))
+    print(String(repeating: "-", count: 3))
     
     guard safeIntInput(prompt: "\n🥗 Тип питания (1-3):") != nil else {
         print("❌ Ошибка ввода типа!")
@@ -290,13 +284,13 @@ public func task22() {
          return
      }
  }
-/// ЗАДАЧА 23: Меню ресторана (рефакторинг со словарём)
+// ЗАДАЧА 23: Меню ресторана (рефакторинг со словарём)
 public func task23() {
     printHeader("Задача 23: Меню ресторана")
     
     print("""
-    🍽️  ДОБРО ПОЖАЛОВАТЬ В РЕСТОРАН "SWIFT BISTRO"!
-    Выберите категорию блюд и конкретное блюдо из меню.
+    Welcome to "SWIFT BISTRO"!
+    Выберите категорию и конкретное блюдо из меню.
     """)
     
     // Словарь с меню ресторана
@@ -329,16 +323,12 @@ public func task23() {
     ]
     
     // Показываем категории
-    print("\n" + String(repeating: "=", count: 40))
     print("📋 КАТЕГОРИИ МЕНЮ")
-    print(String(repeating: "=", count: 40))
     
     let categories = Array(restaurantMenu.keys).sorted()
     for (index, category) in categories.enumerated() {
         print("\(index + 1). \(category)")
     }
-    
-    print(String(repeating: "=", count: 40))
     
     // Выбор категории
     guard let categoryChoice = safeIntInput(prompt: "\n📥 Выберите категорию (1-\(categories.count)):"),
@@ -352,15 +342,11 @@ public func task23() {
     let categoryItems = restaurantMenu[selectedCategory]!
     
     // Показываем блюда в выбранной категории
-    print("\n" + String(repeating: "=", count: 40))
     print("🍽️  \(selectedCategory)")
-    print(String(repeating: "=", count: 40))
     
     for (number, item) in categoryItems.sorted(by: { $0.key < $1.key }) {
         print("\(number). \(item.name) - \(item.price) руб.")
     }
-    
-    print(String(repeating: "=", count: 40))
     
     // Выбор блюда
     guard let dishChoice = safeIntInput(prompt: "\n📥 Выберите номер блюда (1-3):"),
@@ -377,15 +363,12 @@ public func task23() {
     }
     
     // Итоговый заказ
-    print("\n" + String(repeating: "⭐", count: 45))
     print("✅ ВАШ ЗАКАЗ ПРИНЯТ!")
-    print(String(repeating: "⭐", count: 45))
-    print("\n📋 ДЕТАЛИ ЗАКАЗА:")
     print("   Категория: \(selectedCategory)")
     print("   Блюдо: \(selectedDish.name)")
     print("   Цена: \(selectedDish.price) руб.")
-    print("   Номер заказа: #\(Int.random(in: 1000...9999))")
-    print("   Примерное время: \(Int.random(in: 15...40)) мин")
+    print("   Номер заказа: #\(Int.random(in: 10...25))")
+    print("   Примерное время: \(Int.random(in: 5...12)) мин")
     
     // Дополнительная информация
     if selectedCategory == "ДЕСЕРТЫ" {
@@ -397,8 +380,27 @@ public func task23() {
     }
     
     print("\n💳 ИТОГО К ОПЛАТЕ: \(selectedDish.price) руб.")
-    print(String(repeating: "⭐", count: 45))
-    print("\n🍴 Приятного аппетита! Ожидайте официанта.")
     
     pressEnterToContinue()
 }
+
+// ЗАДАЧА 24: День недели - порядковый номер и название
+public func task24() {
+    print("Задача 24: Ввести порядковый номер дня недели и вывести его название")
+    
+    // ВСЕ проверки в одном guard
+      guard let input = safeIntInput(prompt: "Ваш выбор (1-7):"),
+            (1...7).contains(input) else {
+          // Здесь input НЕ доступен!
+          print("❌ Ошибка: нужно число от 1 до 7")
+          pressEnterToContinue()
+          return
+      }
+      
+      // Основная логика
+      let days = ["Sunday", "Monday", "Tuesday", "Wednesday",
+                  "Thursday", "Friday", "Saturday"]
+      print("📅 День №\(input) - это \(days[input - 1])")
+    
+    pressEnterToContinue()
+  }
