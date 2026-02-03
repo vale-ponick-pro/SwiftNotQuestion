@@ -6,8 +6,7 @@
 //
 import Foundation
 
+// --- ЗАПУСК ПРОГРАММЫ ---
 runProgram()
 
-func chooseDinner() {
-    
-}
+
