@@ -19,13 +19,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		58F039F22F2761BD00E292F5 /* Swift?NotQuestion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Swift?NotQuestion"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58F039F22F2761BD00E292F5 /* SwiftNotQuestion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftNotQuestion; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		58F039F42F2761BD00E292F5 /* Swift?NotQuestion */ = {
+		58F039F42F2761BD00E292F5 /* SwiftNotQuestion */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Swift?NotQuestion";
+			path = SwiftNotQuestion;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -44,7 +44,7 @@
 		58F039E92F2761BD00E292F5 = {
 			isa = PBXGroup;
 			children = (
-				58F039F42F2761BD00E292F5 /* Swift?NotQuestion */,
+				58F039F42F2761BD00E292F5 /* SwiftNotQuestion */,
 				58F039F32F2761BD00E292F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +52,7 @@
 		58F039F32F2761BD00E292F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58F039F22F2761BD00E292F5 /* Swift?NotQuestion */,
+				58F039F22F2761BD00E292F5 /* SwiftNotQuestion */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,9 +60,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58F039F12F2761BD00E292F5 /* Swift?NotQuestion */ = {
+		58F039F12F2761BD00E292F5 /* SwiftNotQuestion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58F039F92F2761BD00E292F5 /* Build configuration list for PBXNativeTarget "Swift?NotQuestion" */;
+			buildConfigurationList = 58F039F92F2761BD00E292F5 /* Build configuration list for PBXNativeTarget "SwiftNotQuestion" */;
 			buildPhases = (
 				58F039EE2F2761BD00E292F5 /* Sources */,
 				58F039EF2F2761BD00E292F5 /* Frameworks */,
@@ -73,13 +73,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				58F039F42F2761BD00E292F5 /* Swift?NotQuestion */,
+				58F039F42F2761BD00E292F5 /* SwiftNotQuestion */,
 			);
-			name = "Swift?NotQuestion";
+			name = SwiftNotQuestion;
 			packageProductDependencies = (
 			);
 			productName = "Swift?NotQuestion";
-			productReference = 58F039F22F2761BD00E292F5 /* Swift?NotQuestion */;
+			productReference = 58F039F22F2761BD00E292F5 /* SwiftNotQuestion */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58F039ED2F2761BD00E292F5 /* Build configuration list for PBXProject "Swift?NotQuestion" */;
+			buildConfigurationList = 58F039ED2F2761BD00E292F5 /* Build configuration list for PBXProject "SwiftNotQuestion" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -111,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58F039F12F2761BD00E292F5 /* Swift?NotQuestion */,
+				58F039F12F2761BD00E292F5 /* SwiftNotQuestion */,
 			);
 		};
 /* End PBXProject section */
@@ -270,7 +270,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58F039ED2F2761BD00E292F5 /* Build configuration list for PBXProject "Swift?NotQuestion" */ = {
+		58F039ED2F2761BD00E292F5 /* Build configuration list for PBXProject "SwiftNotQuestion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58F039F72F2761BD00E292F5 /* Debug */,
@@ -279,7 +279,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58F039F92F2761BD00E292F5 /* Build configuration list for PBXNativeTarget "Swift?NotQuestion" */ = {
+		58F039F92F2761BD00E292F5 /* Build configuration list for PBXNativeTarget "SwiftNotQuestion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58F039FA2F2761BD00E292F5 /* Debug */,
