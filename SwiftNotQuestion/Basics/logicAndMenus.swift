@@ -519,3 +519,25 @@ public func task27() {
          return
      }
  }
+// ЗАДАЧА 28: Выбери тему -> определим ее цвет
+
+public func task28() {
+    printHeader("Задача 28: Black theme - ask user: turn on black theme? color = black if answer - 'yes' else color = white")
+ 
+    // 1. Enter data
+    let darkMode = safeStringInput(prompt: "Turn on black theme?(yes/no): ").lowercased()
+    guard darkMode == "yes" || darkMode == "no" else {
+        print("Error! Enter 'yes'/'no'")
+        pressEnterToContinue()
+        return
+    }
+    
+    let color = darkMode == "yes" ? "black" : "light"
+    
+    print("Selected theme: \(color == "black" ? "Dark" : "Light")")
+pressEnterToContinue()
+}
+    
+    
+    
+
