@@ -391,8 +391,7 @@ public func task24() {
     // ВСЕ проверки в одном guard
       guard let input = safeIntInput(prompt: "Ваш выбор (1-7):"),
             (1...7).contains(input) else {
-          // Здесь input НЕ доступен!
-          print("❌ Ошибка: нужно число от 1 до 7")
+          print("❌ Ошибка: нужно число от 1 до 7") // Здесь input НЕ доступен! почему?
           pressEnterToContinue()
           return
       }
@@ -404,3 +403,88 @@ public func task24() {
     
     pressEnterToContinue()
   }
+
+// ЗАДАЧА 25: Билет на самолет
+public func task25() {
+    print("Задача 25: Ввести возраст -> спросить: есть билет? -> да 'Проходите'/нет 'Купите билет' -> если младше 2 лет - билет не нужен")
+    
+    // 1. проверь возраст
+    guard let age = safeIntInput(prompt: "Enter passenger's age:"),
+          age > 0 else {
+        print("Age must be greater than zero")
+        pressEnterToContinue()
+        return
+    }
+    
+    // 2. проверь наличие билета
+    let ticketAnswer = safeStringInput(prompt: "Passenger have a ticket? (yes/no):")
+    let normalizedAnswer = ticketAnswer.lowercased()
+    guard normalizedAnswer == "yes" ||  normalizedAnswer == "no" else {
+           print("Error! Enter only 'yes' or 'no'")
+        pressEnterToContinue()
+        return
+    }
+    
+    // 3. свойство для хранения ??
+    let hasTicket = ticketAnswer.lowercased() == "yes"
+    
+    // 4. логика с вложенным тернарным оператором
+    let message = age < 2 ?
+    "Child under 2 year old: not need a ticket" : hasTicket ?
+    "Boarding ✅" : "Buy a ticket ❌"
+    
+    print("\n\(message)")
+    pressEnterToContinue()
+}
+
+// ЗАДАЧА 26: Ticket on airplan - Enums with Associated Values
+public func task26() {
+    print("Задача 26: Ввести возраст -> спросить: есть билет? -> да 'Проходите'/нет 'Купите билет' -> если младше 2 лет - билет не нужен")
+    
+    // 1. Enter data
+    guard let age = safeIntInput(prompt: "Enter passenger's age:"),
+          age > 0 else {
+        print("❌ Invalid age!")
+        pressEnterToContinue()
+        return
+    }
+    
+    let answer = safeStringInput(prompt: "Passenger have a ticket? (yes/no):").lowercased()
+    guard answer == "yes" || answer == "no" else {
+        print("Enter 'yes'/'no'")
+        pressEnterToContinue()
+        return
+    }
+    
+    let hasTicket = answer == "yes"
+    
+    // ENUM with associated values
+    enum BoardingStatus {
+        case child(age: Int)
+        case adult(age: Int, hasTicket: Bool)
+        
+        var message: String {
+            switch self {
+            case .child(let age):
+                return "Child \(age) year old: ticket not need"
+            case .adult(let age, true):
+                return "Passenger \(age) year old: boarding!"
+            case .adult(let age, false):
+                return "Passenger \(age) year old: buy a ticket!"
+            }
+        }
+    }
+    // 3. Create status
+    let status = age < 2
+    ? BoardingStatus.child(age: age)
+    : BoardingStatus.adult(age: age, hasTicket: hasTicket)
+    
+    // 4. Result
+    print(status.message)
+    pressEnterToContinue()
+}
+/* Суть:
+    1. Ввод + валидация
+    2. Чистый enum
+    3. Тернарный оператор для создания статуса
+    4. Простой вывод */
