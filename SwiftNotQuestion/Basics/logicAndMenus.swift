@@ -519,25 +519,44 @@ public func task27() {
          return
      }
  }
-// ЗАДАЧА 28: Выбери тему -> определим ее цвет
 
+// TASK28: switch версия (yes/no → black/light)
 public func task28() {
-    printHeader("Задача 28: Black theme - ask user: turn on black theme? color = black if answer - 'yes' else color = white")
- 
-    // 1. Enter data
-    let darkMode = safeStringInput(prompt: "Turn on black theme?(yes/no): ").lowercased()
-    guard darkMode == "yes" || darkMode == "no" else {
-        print("Error! Enter 'yes'/'no'")
-        pressEnterToContinue()
-        return
+    printHeader("Задача 28: Black theme (yes/no)")
+    
+    let input = "yes"  // Xcode HARDCODE
+    
+    let cleanInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    
+    switch cleanInput {
+    case "yes":   print("✅ Selected theme: Dark🖤")
+    case "no":    print("✅ Selected theme: Light☀️")
+    default:      print("❌ Error! Enter 'yes' or 'no'")
     }
-    
-    let color = darkMode == "yes" ? "black" : "light"
-    
-    print("Selected theme: \(color == "black" ? "Dark" : "Light")")
-pressEnterToContinue()
+    pressEnterToContinue()
 }
+
+// TASK29: switch версия (true/false → Bool)
+public func task29() {
+    printHeader("Задача 29: Black theme (true/false)")
     
+    let input = "true"  // Xcode HARDCODE
     
+    let cleanInput = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    
+    switch cleanInput {
+    case "true":  print("✅ Selected theme: Dark🖤")
+    case "false": print("✅ Selected theme: Light☀️")
+    default:      print("❌ Error! Enter 'true' or 'false'")
+    }
+    pressEnterToContinue()
+}
+
+
+
+    
+   
+   
+
     
 
