@@ -242,3 +242,62 @@ public func task50() {
     pressEnterToContinue()
 }
 
+public func task51() {
+    printHeader("Задача 51: D Doors of Durin - user enters password until guess 'mellon'. Print number of attempts and success message.")
+    
+    let password = "mellon".lowercased()
+    var count = 0
+    
+    while true {
+        let attempt = safeStringInput(prompt: "Enter password: ")
+        count += 1
+       
+        
+        if attempt.lowercased() != password {
+            print("🔥 Speak frend and enter!.")
+            continue
+        } else {
+            print("✅ Welcome to Moria! Attempts: \(count).")
+            break
+        }
+    }
+    pressEnterToContinue()
+}
+    
+public func task52() {
+    printHeader("Задача 52: D Doors of Durin - 5 attempts for 'mellon'")
+    
+    let password = "mellon"
+    var attempts = 0
+    
+    while attempts < 5 {
+        let input = safeStringInput(prompt: "Password (\(5 - attempts) left): ")
+        attempts += 1
+        
+        if input.lowercased() == password {
+            print("✅ Welcome to Moria! Attempts: \(attempts).")
+            break
+        }
+        print("🔥 Speak friend and enter!")
+    }
+    
+    if attempts == 5 {
+        print("❌ Doors closed. Watcher awakens!")
+    }
+    pressEnterToContinue()
+}
+
+public func task53() {
+    printHeader("Задача 53: Loop while - add numbers from 1 to 10")
+    var currentNumber = 1
+    let maxNum = 10
+    var sum = 0
+    
+    while currentNumber <= maxNum {
+        sum += currentNumber  // 🧺 кладем число в корзину
+        currentNumber += 1  // ➡️ берем следующее число
+    }
+    print("Sum of numbers from 1 to 10 = \(sum)")
+    pressEnterToContinue()
+}
+
